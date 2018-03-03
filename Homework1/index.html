@@ -8,50 +8,10 @@
 	<div id="container"></div>
 	<script src="https://unpkg.com/react@15/dist/react.js"></script> 
 	<script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script> 
-	<!--<script src="ComponentShop.js"></script>-->
+	<script src="ComponentShop.js"></script>
 	<link rel="stylesheet" type="text/css" href="ComponentShop.css" />
 
 	<script>
-var Block = React.createClass({
-
-displayName: 'Block',
-
-
-propTypes: {
-	PhoneCat:React.PropTypes.arrayOf(
-		React.PropTypes.shape({
-		phoneModel: React.PropTypes.string.isRequired,
-		code: React.PropTypes.number.isRequired,
-		pic: React.PropTypes.string.isRequired,
-		available: React.PropTypes.number.isRequired,
-		price: React.PropTypes.number.isRequired,
-		})
-	)
-
-},
-
-render: function() {
-	var outputArr=[];
-	var arr = this.props.PhoneCat
-	arr.forEach(function(item, i, arr) {
-		var some=arr[i];
-		var Arr=
-		React.DOM.div({key:some.code,className:'PhoneType'},
-			React.DOM.span({className:'PhoneModel'},some.phoneModel),
-			React.DOM.span({className:'Descr'},some.descrip),
-			React.DOM.img({className:'picPhone',src: some.pic}),
-			React.DOM.span({className:'Available'},some.available),
-			React.DOM.span({className:'Price'},some.price),
-		);
-		outputArr.push(Arr);
-	});
-
-	return React.DOM.div( {className:'CatalogBlock'}, 
-		React.DOM.div( {className:'Table'}, outputArr ),
-	);
-},
-});
-//////////////////////
 
 	var PhonesCatalog=[ 
 		{phoneModel:'Nokia 5110',code:1,descrip:"Nokia 5110 is a GSM mobile phone that was introduced by Nokia in March 1998.",pic:'img/nokia.png',available:4,price:100}, 
