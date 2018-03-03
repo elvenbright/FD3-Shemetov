@@ -1,0 +1,42 @@
+.CatalogBlock {
+	border:1px solid #cccccc;
+}
+
+.Table>.PhoneType {
+	display: flex;
+	border:1px solid #cccccc;
+	position:relative;
+}
+
+.CatalogBlock>.Table>.PhoneType>.PhoneModel {
+	font-weight: 900;
+	position: absolute;
+}
+
+.CatalogBlock>.Table>.PhoneType>.Descr {
+	font-size: 0.8em;
+	font-style: italic;
+	position: absolute;
+	top: 20px;
+	width:200px;
+}
+
+.CatalogBlock>.Table>.PhoneType>.picPhone {
+	margin-left: 200px;
+}
+
+.CatalogBlock>.Table>.PhoneType>.Available {
+	font-size: 1.1em;
+	width: 50px;
+	text-align: center;
+	margin: auto;
+}
+
+.CatalogBlock>.Table>.PhoneType>.Price {
+	font-weight: 400;
+	font-size: 1.2em;
+	text-decoration: underline ;
+	width: 50px;
+	text-align: center;
+	margin: auto;
+}

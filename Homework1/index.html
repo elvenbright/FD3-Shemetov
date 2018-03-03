@@ -1,33 +1,72 @@
 <!DOCTYPE html> 
-<html> 
-<head> 
-  <meta charset="utf-8" />
-  <title>Голосование</title>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>ishop</title>
 </head> 
 <body> 
-  <div id="container"></div> 
-      
-  <script src="https://unpkg.com/react@15/dist/react.js"></script> 
-  <script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script> 
-      
-  <script src="VotesBlock.js"></script>
-  <link rel="stylesheet" type="text/css" href="VotesBlock.css" />
+	<div id="container"></div>
+	<script src="https://unpkg.com/react@15/dist/react.js"></script> 
+	<script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script> 
+	<!--<script src="ComponentShop.js"></script>-->
+	<link rel="stylesheet" type="text/css" href="ComponentShop.css" />
 
-  <script>
+	<script>
+var Block = React.createClass({
 
-    var questionText='Как вы относитесь к программированию?';
-    var answersArr=[ 
-      {text:'хорошо',code:1,count:222}, 
-      {text:'не получается',code:2,count:123}, 
-      {text:'избегаю',code:3,count:444} 
-    ];
+displayName: 'Block',
 
-    ReactDOM.render(
-      React.createElement(VotesBlock,{question:questionText,answers:answersArr}), 
-      document.getElementById('container') 
-    );
 
-  </script>
+propTypes: {
+	PhoneCat:React.PropTypes.arrayOf(
+		React.PropTypes.shape({
+		phoneModel: React.PropTypes.string.isRequired,
+		code: React.PropTypes.number.isRequired,
+		pic: React.PropTypes.string.isRequired,
+		available: React.PropTypes.number.isRequired,
+		price: React.PropTypes.number.isRequired,
+		})
+	)
 
+},
+
+render: function() {
+	var outputArr=[];
+	var arr = this.props.PhoneCat
+	arr.forEach(function(item, i, arr) {
+		var some=arr[i];
+		var Arr=
+		React.DOM.div({key:some.code,className:'PhoneType'},
+			React.DOM.span({className:'PhoneModel'},some.phoneModel),
+			React.DOM.span({className:'Descr'},some.descrip),
+			React.DOM.img({className:'picPhone',src: some.pic}),
+			React.DOM.span({className:'Available'},some.available),
+			React.DOM.span({className:'Price'},some.price),
+		);
+		outputArr.push(Arr);
+	});
+
+	return React.DOM.div( {className:'CatalogBlock'}, 
+		React.DOM.div( {className:'Table'}, outputArr ),
+	);
+},
+});
+//////////////////////
+
+	var PhonesCatalog=[ 
+		{phoneModel:'Nokia 5110',code:1,descrip:"Nokia 5110 is a GSM mobile phone that was introduced by Nokia in March 1998.",pic:'img/nokia.png',available:4,price:100}, 
+		{phoneModel:'Samsung R220',code:2,descrip:"Samsung SGH R220 was one of the earliest phones made by Samsung Group in January 2001.",pic:'img/samsung.png',available:6,price:200}, 
+		{phoneModel:'Siemens C35',code:3,descrip:"The Siemens C352 is a mobile phone introduced by Siemens in October, 2000.",pic:'img/siemens.png',available:17,price:120},
+		{phoneModel:'Ericsson SH888',code:4,descrip:"Ericsson SH 888 - description and parameters Ericsson SH 888 supports GSM frequency. Official announcement date is 1998.",pic:'img/ericsson.png',available:5,price:90},
+		{phoneModel:'Motorola V2288',code:5,descrip:"Motorola V2288 phone. Announced 2000. Features Monochrome graphic display, 700 mAh battery.",pic:'img/motorola.png',available:9,price:110},
+		{phoneModel:'Huawei ETS 668',code:6,descrip:"Connection standard: CDMA 2000 1X, IMT-MC-450. Battery: Li-Ion 950 mАh",pic:'img/huawei.png',available:11,price:190}, 
+	];
+
+		ReactDOM.render(
+		React.createElement(Block,{PhoneCat:PhonesCatalog}), 
+		document.getElementById('container') 
+	);
+
+	</script>
 </body> 
 </html>
