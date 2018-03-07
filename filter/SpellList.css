@@ -1,0 +1,16 @@
+.checkBox{
+	display: block;
+	float: left;
+	width: 25px;
+	height: 25px;
+}
+.inputText{
+	width: 100px;
+	height: 25px;
+}
+.SpellTab{
+	margin-top: 2px;
+	display: block;
+	width: 140px;
+	height: 70px;
+}

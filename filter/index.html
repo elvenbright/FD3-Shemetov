@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>filter</title>
+</head>
+<body>
+	<div id="container"></div>
+	<script src="https://unpkg.com/react@15/dist/react.js"></script> 
+	<script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script> 
+	<script src="SpellList.js"></script>
+	<link rel="stylesheet" type="text/css" href="SpellList.css" />
+	<script>
+	var SpellList=[ 
+		{spell:'сила огня',code:1},
+		{spell:'сила ветра',code:2},
+		{spell:'сила тьмы',code:3},
+		{spell:'стена огня',code:4},
+		{spell:'стена льда',code:5},
+		{spell:'шар огня',code:6},
+		{spell:'призыв голема',code:7},
+		{spell:'призыв элементаля',code:8},
+		{spell:'призыв демона',code:9},
+		{spell:'проклятье',code:10},
+		{spell:'восстановление',code:11},
+	];
+	ReactDOM.render(
+		React.createElement(Block,{words:SpellList}),//this.props.words
+		document.getElementById('container')
+	);
+	</script>
+</body>
+</html>
