@@ -1,0 +1,327 @@
+<!DOCTYPE html> 
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>ishop2</title>
+	<style>
+body{
+	position: relative;
+	height: 100%;
+}
+#container{
+
+}
+.CatalogBlock{
+	height: 100%;
+	width: 762px;
+	margin: 0 auto;
+}
+
+.EditFrame{
+	position: relative;
+	float: right;
+	height: 100%;
+	width: 270px;
+
+}
+.EditTable{
+	position: fixed;
+	background-color: #cef;
+	height: 100%;
+	width: 270px;
+	
+}
+
+.Table {
+	border:1px solid #cccccc;
+	width: 482px;
+	float: left;
+	
+}
+.AddNew{
+
+	width: 482px;
+	float: left;
+
+	
+}
+.Table>.PhoneType {
+	display: grid;
+	grid-template-columns: 200px 100px 62px 120px;
+	grid-template-rows: 18px 46px 64px;
+	border:1px solid rgba(128,128,128,0.1);
+	
+}
+.Table>.PhoneTypeSelected {
+	display: grid;
+	grid-template-columns: 200px 100px 62px 120px;
+	grid-template-rows: 18px 46px 64px;
+	border:1px solid blue;
+	
+}
+.InvisKey{
+	visibility: hidden;
+	grid-column: 1;
+	grid-row: 3 / 4;
+}
+.Table .PhoneModel {
+	font-weight: 900;
+	grid-column: 1;
+	grid-row: 1;
+}
+
+.Table .Descr {
+	z-index: 5;
+	font-size: 0.8em;
+	font-style: italic;
+	width:200px;
+	grid-column: 1;
+	grid-row: 2 / 4;
+}
+
+.Table .picPhone {
+	z-index: 1;
+	height: 128px;
+	width: auto;
+	grid-column: 2;
+	grid-row: 1 / 4;
+	justify-self: center;
+}
+
+.Table .Available {
+	z-index: 5;
+	border:1px solid #cccccc;
+	grid-column: 3;
+	grid-row: 1 / 3;
+	white-space: pre-wrap;
+	align-self: center;
+	text-align: center;
+}
+
+.Table .Price {
+	z-index: 5;
+	border:1px solid #cccccc;
+	grid-column: 3;
+	grid-row: 3 / 4;
+	white-space: pre-wrap;
+	align-self: center;
+	text-align: center;
+}
+.EditBut{
+	height: 30px;
+	width: 100px;
+	grid-column: 4;
+	grid-row: 1 / 3;
+	align-self: center;
+	justify-self: center;
+}
+.DeleteBut{
+	height: 30px;
+	width: 100px;
+	grid-column: 4;
+	grid-row: 3 / 4;
+	align-self: center;
+	justify-self: center;
+}
+	</style>
+</head> 
+<body> 
+	<div id="container"></div>
+	
+	<script src="https://unpkg.com/react@15/dist/react.js"></script> 
+	<script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script> 
+	<!--<script src="ComponentShop.js"></script>-->
+	<!--<link rel="stylesheet" type="text/css" href="ComponentShop.css" />-->
+
+	<script>
+
+////////////////////////[ComponentShop js]
+var ComponentShop = React.createClass({
+	displayName: 'ComponentShop',
+	propTypes: {
+		PhoneCat:React.PropTypes.arrayOf(
+			React.PropTypes.shape({
+			phoneModel: React.PropTypes.string.isRequired,
+			code: React.PropTypes.number.isRequired,
+			pic: React.PropTypes.string.isRequired,
+			available: React.PropTypes.number.isRequired,
+			price: React.PropTypes.number.isRequired,
+			})
+		)
+	},
+	
+	getInitialState: function() {
+		return {
+			CatalogToRender: this.props.PhoneCat,
+			isEditFrActiveted: false,
+			EditFrameData: null,
+		};
+	},
+	
+	BuildFrameData: function() {
+		
+	},
+	EditFunc: function() {
+		console.log('Редактируемс');
+	},
+	DeleteFunc: function() {
+		console.log('Удаляемс');
+	},
+	AddNewFunc: function() {
+		//Убрать все выделения рамок
+		console.log('Добавляемс');
+		//this.setState( {}, this.mazaFAka);
+		this.state.EditFrameData='hello';
+		console.log(this.state.EditFrameData);
+	},
+	////////////////////////////////////////////////
+	////////////////////////////////////////////////
+	////////////////////////////////////////////////
+	//меняет стиль при нажатии на div
+	mazaFAka: function() {
+		/*
+		this.state.CatalogToRender.forEach( a => {
+				a.isSelected=false;
+				//console.log(a.isSelected);
+		});
+		*/
+		
+	},
+	СhangeStyle: function(n) {
+		this.state.CatalogToRender[n].isSelected
+		?
+		this.state.CatalogToRender[n].isSelected=false
+		:
+		this.state.CatalogToRender[n].isSelected=true;
+		this.state.CatalogToRender.forEach( a => {
+			if(this.state.CatalogToRender[n]!=a)
+				a.isSelected=false;
+		});
+	},
+	
+	//меняет стиль при нажатии кнопки
+	ForceChangeStyle: function(n) {
+		if(n){
+			this.state.CatalogToRender.forEach( a => {
+				if(this.state.CatalogToRender[n-1]!=a)
+					a.isSelected=false;
+			});
+			this.state.CatalogToRender[n-1].isSelected=true;
+		}
+		/* mazafaka func
+		else{
+			this.state.CatalogToRender.forEach( a => {
+				a.isSelected=false;
+			});
+		};
+		*/
+	},
+	
+	
+	OnClickFunc: function(inp){
+	
+		if(inp.target.type=="button"){
+			var count=0;
+			this.state.CatalogToRender.forEach( p => {
+				if(!p.isSelected){
+					count++;
+				};
+			});
+			//1 если не выбран ни один DIV
+			if(count==this.state.CatalogToRender.length){
+				this.setState( {}, this.ForceChangeStyle(inp.currentTarget.firstChild.textContent));
+			};
+			//2 если выбран div, но нажимаем на другой Edit
+			if(count!=this.state.CatalogToRender.length){
+				this.setState( {}, this.ForceChangeStyle(inp.currentTarget.firstChild.textContent));
+			};
+		}
+		else{
+			//срабатывает когда нажимаем на DIV
+			for(var t=0;t<this.state.CatalogToRender.length;t++){
+				if(inp.currentTarget.firstChild.textContent==this.state.CatalogToRender[t].code){
+					this.setState( {}, this.СhangeStyle(t));
+				};
+			};
+		}
+	},
+	
+	render: function() {
+		
+		return React.DOM.div( {className:'CatalogBlock'},
+			React.createElement(ComponentProduct, {CatalogData:this.state.CatalogToRender, cbAddNewFunc:this.AddNewFunc,cbOnClickFunc: this.OnClickFunc,cbEditFunc:this.EditFunc,cbDeleteFunc:this.DeleteFunc}),
+			React.DOM.div( {className:'EditFrame'},
+				React.DOM.div( {className:'EditTable'},this.state.EditFrameData )
+			),
+			
+		);
+	},
+});
+	
+	
+	
+///////////////////////[ComponentProduct js]
+var ComponentProduct = React.createClass({
+	displayName: 'ComponentProduct',
+	
+	propTypes: {
+		CatalogData:React.PropTypes.arrayOf(
+			React.PropTypes.shape({
+			phoneModel: React.PropTypes.string.isRequired,
+			code: React.PropTypes.number.isRequired,
+			pic: React.PropTypes.string.isRequired,
+			available: React.PropTypes.number.isRequired,
+			price: React.PropTypes.number.isRequired,
+			
+			})
+		),
+		cbOnClickFunc: React.PropTypes.func.isRequired,
+		cbEditFunc: React.PropTypes.func.isRequired,
+		cbDeleteFunc: React.PropTypes.func.isRequired,
+		cbAddNewFunc: React.PropTypes.func.isRequired,
+	},
+	
+	getInitialState: function() {
+		return {
+			Cat: this.props.CatalogData,
+		};
+	},
+	render: function() {
+	var outputArr=this.state.Cat.map( item =>
+        React.DOM.div({key:item.code,className: item.isSelected?'PhoneTypeSelected':'PhoneType',onClick: this.props.cbOnClickFunc},
+				React.DOM.span({className:'InvisKey'},item.code),
+				React.DOM.span({className:'PhoneModel'},item.phoneModel),
+				React.DOM.span({className:'Descr'},item.descrip),
+				React.DOM.img({className:'picPhone',src: item.pic}),
+				React.DOM.span({className:'Available'},'In Stock:'+'\n'+item.available),
+				React.DOM.span({className:'Price'},'Price:'+'\n'+item.price),
+				React.DOM.input( {type:'button',value:'Edit',className:'EditBut',onClick: this.props.cbEditFunc}),
+				React.DOM.input( {type:'button',className:'DeleteBut',value:'Delete',onClick: this.props.cbDeleteFunc}),
+		)
+      );
+	
+		return React.DOM.div( {className:'Table'}, outputArr,
+			React.DOM.input( {type:'button',value:'Add new Model',className:'AddNew',onClick: this.props.cbAddNewFunc} ),
+		);
+	},
+
+});
+/////////////////////////[index html]
+	var PhonesCatalog=[ 
+		{phoneModel:'Nokia 5110',code:1,descrip:"Nokia 5110 is a GSM mobile phone that was introduced by Nokia in March 1998.",pic:'http://static.mobile-arsenal.com.ua/images/catalog/nokia/5110/nokia-5110-m.jpg',available:4,price:100}, 
+		{phoneModel:'Samsung R220',code:2,descrip:"Samsung SGH R220 was one of the earliest phones made by Samsung Group in January 2001.",pic:'http://static.mobile-arsenal.com.ua/images/catalog/samsung/r220/samsung-r220-m.jpg',available:6,price:200}, 
+		{phoneModel:'Siemens C35',code:3,descrip:"The Siemens C352 is a mobile phone introduced by Siemens in October, 2000.",pic:'http://rarephones.ru/image/cache/catalog/osn/siemens-c35-1000x1000.jpg',available:14,price:120},
+		{phoneModel:'Ericsson SH888',code:4,descrip:"Ericsson SH 888 - description and parameters Ericsson SH 888 supports GSM frequency. Official announcement date is 1998.",pic:'http://mobilagid.ru/phone/ericsson_sh888.jpg',available:5,price:90},
+		{phoneModel:'Motorola V2288',code:5,descrip:"Motorola V2288 phone. Announced 2000. Features Monochrome graphic display, 700 mAh battery.",pic:'https://static.toiimg.com/photo/56589946/.jpg',available:9,price:110},
+		{phoneModel:'Huawei ETS 668',code:6,descrip:"Connection standard: CDMA 2000 1X, IMT-MC-450. Battery: Li-Ion 950 mАh",pic:'http://www.mobiset.ru/photo/huawei/ets_668/huawei_ets_668_2899c.jpg',available:11,price:190}, 
+		
+	];
+
+	ReactDOM.render(
+		React.createElement(ComponentShop,{PhoneCat:PhonesCatalog}), 
+		document.getElementById('container') 
+	);
+
+	</script>
+</body> 
+</html>

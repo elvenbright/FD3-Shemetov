@@ -1,0 +1,81 @@
+.Table {
+	width: 482px;
+	float: left;
+}
+.AddNew{
+	width: 482px;
+	float: left;
+}
+.Table>.PhoneType {
+	display: grid;
+	grid-template-columns: 200px 100px 62px 120px;
+	grid-template-rows: 18px 46px 64px;
+	border:1px solid #cccccc;
+}
+.Table>.PhoneTypeSelected {
+	display: grid;
+	grid-template-columns: 200px 100px 62px 120px;
+	grid-template-rows: 18px 46px 64px;
+	border:1px solid blue;
+	
+}
+.InvisKey{
+	visibility: hidden;
+	grid-column: 1;
+	grid-row: 3 / 4;
+}
+.Table .PhoneModel {
+	font-weight: 900;
+	grid-column: 1;
+	grid-row: 1;
+}
+.Table .Descr {
+	z-index: 5;
+	font-size: 0.8em;
+	font-style: italic;
+	width:200px;
+	grid-column: 1;
+	grid-row: 2 / 4;
+}
+.Table .picPhone {
+	z-index: 1;
+	height: 128px;
+	width: auto;
+	grid-column: 2;
+	grid-row: 1 / 4;
+	justify-self: center;
+}
+.Table .Available {
+	z-index: 5;
+	border:1px solid #cccccc;
+	grid-column: 3;
+	grid-row: 1 / 3;
+	white-space: pre-wrap;
+	align-self: center;
+	text-align: center;
+}
+.Table .Price {
+	z-index: 5;
+	border:1px solid #cccccc;
+	grid-column: 3;
+	grid-row: 3 / 4;
+	white-space: pre-wrap;
+	align-self: center;
+	text-align: center;
+}
+.EditBut{
+	height: 30px;
+	width: 110px;
+	grid-column: 4;
+	grid-row: 1 / 3;
+	align-self: center;
+	justify-self: center;
+}
+.DeleteBut{
+	height: 30px;
+	width: 110px;
+	grid-column: 4;
+	grid-row: 3 / 4;
+	align-self: center;
+	justify-self: center;
+}
