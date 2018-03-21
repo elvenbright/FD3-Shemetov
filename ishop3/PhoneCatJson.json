@@ -1,0 +1,8 @@
+[
+	{"phoneModel":"Nokia 5110","code":"1","descrip":"Nokia 5110 is a GSM mobile phone that was introduced by Nokia in March 1998.","pic":"http://static.mobile-arsenal.com.ua/images/catalog/nokia/5110/nokia-5110-m.jpg","available":"4","price":"100"}, 
+	{"phoneModel":"Samsung R220","code":"2","descrip":"Samsung SGH R220 was one of the earliest phones made by Samsung Group in January 2001.","pic":"http://static.mobile-arsenal.com.ua/images/catalog/samsung/r220/samsung-r220-m.jpg","available":"6","price":"200"}, 
+	{"phoneModel":"Siemens C35","code":"3","descrip":"The Siemens C352 is a mobile phone introduced by Siemens in October, 2000.","pic":"http://rarephones.ru/image/cache/catalog/osn/siemens-c35-1000x1000.jpg","available":"14","price":"120"},
+	{"phoneModel":"Ericsson SH888","code":"4","descrip":"Ericsson SH 888 - description and parameters Ericsson SH 888 supports GSM frequency. Official announcement date is 1998.","pic":"http://mobilagid.ru/phone/ericsson_sh888.jpg","available":"5","price":"90"},
+	{"phoneModel":"Motorola V2288","code":"5","descrip":"Motorola V2288 phone. Announced 2000. Features Monochrome graphic display, 700 mAh battery.","pic":"https://static.toiimg.com/photo/56589946/.jpg","available":"9","price":"110"},
+	{"phoneModel":"Huawei ETS668","code":"6","descrip":"Connection standard: CDMA 2000 1X, IMT-MC-450. Battery: Li-Ion 950 mАh","pic":"http://www.mobiset.ru/photo/huawei/ets_668/huawei_ets_668_2899c.jpg","available":"11","price":"190"}
+]
