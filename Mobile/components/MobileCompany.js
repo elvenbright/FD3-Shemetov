@@ -1,22 +1,10 @@
 ﻿import React from 'react';
-import PropTypes from 'prop-types';
 
 import MobileClient from './MobileClient';
 
 import './MobileCompany.css';
 
 class MobileCompany extends React.PureComponent {
-
-  static propTypes = {
-    name: PropTypes.string.isRequired,
-    clients:PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        fio: PropTypes.string.isRequired,
-        balance: PropTypes.number.isRequired,
-      })
-    ),
-  };
 
   state = {
     name: this.props.name,
