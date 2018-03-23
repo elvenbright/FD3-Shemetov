@@ -1,2 +1,4 @@
 #исключить папку и два файла
 /node_modules/
+bundle.js
+bundle.css
