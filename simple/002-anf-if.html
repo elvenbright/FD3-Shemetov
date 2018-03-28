@@ -1,0 +1,49 @@
+<!DOCTYPE html> 
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>MobileList</title>
+	<script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+	<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+	<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+<body>
+	<div id="container"></div> 
+	<script type="text/babel">
+	/////MyComp
+	class MyComp extends React.Component {
+		static defaultProps = {
+			someData: 'Hello',
+		}
+		state = {
+			t : true,
+			f : false,
+		}
+		render() {
+			let someFrame = this.props.someData;
+			return (
+				<div>
+					{
+						(this.state.f)
+						?
+						(null)
+						:
+						<div>{this.props.someData}</div>
+					}
+					{
+						(this.state.t)
+						&&
+						<div>{this.props.someData}</div>
+					}
+				</div>
+			);
+		}
+	}
+	////////////////App Js
+		ReactDOM.render(
+			<MyComp/>
+			,document.getElementById('container')
+		);
+	</script>
+</body> 
+</html>

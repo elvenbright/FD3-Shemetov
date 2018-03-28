@@ -1,0 +1,60 @@
+<!DOCTYPE html> 
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>MobileList</title>
+	<script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+	<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+	<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+<body>
+	<div id="container"></div> 
+	<script type="text/babel">
+	/////Clients
+	class Clients extends React.Component {
+		state = {
+			clients:this.props.clients,
+			status:true,
+		}
+		componentWillReceiveProps = (newProps) => {
+			console.log("MobileClient id="+this.props.info.id+" componentWillReceiveProps");
+			//this.setState({info:newProps.info});
+		};
+		render() {
+			let stat=(this.state.status)?"Активен":"Неактивен";
+			return <div className='ClientFrame'>
+				<span className='ClientFIO'>{this.props.fio}</span>
+				<span className='ClientBalance'>{this.props.balance}</span>
+				<span className='ClientStatus'>{stat}</span>
+			</div>;
+		}
+	}
+	
+	/////MobileList
+	class MobileList extends React.Component {
+		state = {
+			clients:this.props.clients,
+		}
+		render() {
+			
+			//вызовет столько раз, сколько элементов в массиве
+			let clientsFrame=this.state.clients.map( v =>
+				<Clients key={v.id} fio={v.fio} balance={v.balance} />
+			);
+			return (
+				<div>
+					{clientsFrame}
+				</div>
+			);
+		}
+	}
+	////////////////App Js
+	let contJson = [{id:12,fio:'Alex',balance:330},{id:11,fio:'Sam',balance:220}];
+	
+		ReactDOM.render(
+			<MobileList clients={contJson} />
+			,document.getElementById('container')
+		);
+	</script>
+</body> 
+</html>
