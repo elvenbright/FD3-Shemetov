@@ -26,12 +26,12 @@ class ComponentShop extends React.Component {
 		instTel: '',
 		priceTel: '',
 		
-		markRegEx: /^[а-яА-ЯёЁa-zA-Z0-9]+\s[а-яА-ЯёЁa-zA-Z0-9]{1,12}$/,
-		descRegEx: /^[а-яА-ЯёЁa-zA-Z0-9\s\W]{1,150}$/,
-		codeRegEx: /^[0-9]{1,3}$/,
-		urlRegEx: /(\.(jpg|jpeg|png|gif)+$)/,
-		instRegEx: /^[0-9]{1,4}$/,
-		priceRegEx: /^[0-9]{1,4}$/,
+		markRegEx: /^[а-яА-ЯёЁa-zA-Z0-9]+\s[а-яА-ЯёЁa-zA-Z0-9]{1,12}$/, //2слова через пробел от 1до12 символов
+		descRegEx: /^[а-яА-ЯёЁa-zA-Z0-9\s\W]{1,150}$/,  //150 любых сиволов
+		codeRegEx: /^[0-9]{1,3}$/, 						//от 1 да 3 цифр
+		urlRegEx: /(\.(jpg|jpeg|png|gif)+$)/,			//оканчивается на jpeg pnag jpg
+		instRegEx: /^[0-9]{1,4}$/,						//от 1 да 4 цифр
+		priceRegEx: /^[0-9]{1,4}$/,						//от 1 да 4 цифрпше
 		
 		markRegExStatus: true,
 		descRegExStatus: true,
